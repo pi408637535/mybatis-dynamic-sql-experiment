@@ -1,5 +1,7 @@
 package com.pradeep.mybatis.data;
 
+import java.util.Map;
+
 import org.apache.ibatis.jdbc.SQL;
 
 import com.pradeep.mybatis.model.Student;
@@ -60,6 +62,18 @@ public class StudentDynamicSqlProvider {
 			{
 				DELETE_FROM("student");
 				WHERE("ID = #{id}");
+			}
+		}.toString();
+	}
+
+	public String findStudentByNameAndEmail(Map<String, Object> map) {
+		String name = (String) map.get("param1");
+		String email = (String) map.get("param2");
+		return new SQL() {
+			{
+				SELECT("ID,NAME,BRANCH,PERCENTAGE,PHONE,EMAIL");
+				FROM("student");
+				WHERE("NAME=#{name} AND EMAIL=#{email}");
 			}
 		}.toString();
 	}
