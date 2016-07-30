@@ -13,3 +13,6 @@ The dynamic SQL provider methods can have one of the following parameters:
 • java.util.Map
 If the SQL query preparation doesn't depend on an input argument, you can use the
 no-argument SQL provider method.
+
+The SQL utility also provides various other methods to perform JOINS, ORDER_BY,
+GROUP_BY, and so on.
