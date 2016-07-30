@@ -3,6 +3,7 @@ package com.pradeep.mybatis.mapper;
 import org.apache.ibatis.annotations.DeleteProvider;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 
@@ -23,5 +24,8 @@ public interface StudentMapper {
 
 	@DeleteProvider(type = StudentDynamicSqlProvider.class, method = "deleteStudent")
 	int deleteStudent(int studentId);
+
+	@SelectProvider(type = StudentDynamicSqlProvider.class, method = "findStudentByNameAndEmail")
+	Student findStudentByNameAndEmail(@Param("name")String name,@Param("email") String email);
 
 }
